@@ -1,0 +1,70 @@
+/*TEXT COLOR STUFF*/
+body,
+a:hover {color: #444444}
+
+/*BASE COLOR STUFF*/
+#dropmenu ul,
+.post,
+.nextPrevItem,
+#commentsection,
+.listing,
+#loadingContainer,
+#main,
+.eventDetails h2,
+.eventDetails .eventInfo,
+.referenceDivider,
+#controlsWrapper,
+#widgetsWrapper  {background: #ffffff;}
+body.archive h2.posttitle:before,
+body.search h2.posttitle:before,
+.eventDetails h2:before {border-color:transparent transparent #ffffff transparent;}
+#leftSmall:after {border-color:transparent #ffffff transparent transparent;}
+#rightSmall:after {border-color:transparent transparent transparent #ffffff;}
+.nextPrevItem > a:before {border-color:transparent #ffffff transparent transparent;}
+.nextPrevItem > a.alignright:before {border-color:transparent transparent transparent #ffffff;}
+
+/*ACCENT COLOR STUFF*/
+a {color:#ffffff;}
+#navigation ul li a:hover { color:#003366; background-color:#ffffff; }
+#dropmenu ul {border-top-color:#003366;}
+.widget h2:before {border-color:#003366 transparent transparent transparent;}
+.widget_tag_cloud a,
+#cancel-comment-reply-link,
+.reply a,
+.nextPrevItem > a,
+.navigation .pagenav a,
+#crumbs,
+#commentform input[type="submit"], 
+input[type="submit"],
+.widget > h2,
+#copyright,
+#more,
+.logo,
+#progress,
+#hoverInfo,
+#markerInfo,
+.divider,
+#infoBtn {background: #003366;}
+.divider:first-child:after,
+#hoverInfo:after,
+#markerInfo:after,
+.divider:after {border-color:#003366 transparent transparent transparent;}
+#leftSmall:before {border-color:transparent #003366 transparent transparent;}
+#rightSmall:before {border-color:transparent transparent transparent #003366;}
+#leftSmall:before:hover {border-color:transparent #003366 transparent transparent;}
+#rightSmall:before:hover {border-color:transparent transparent transparent #003366;}
+#marker {border-color: #003366;}
+
+/*HOVER COLOR STUFF*/
+.widget_tag_cloud a:hover,
+#cancel-comment-reply-link:hover,
+.reply a:hover,
+.navigation .pagenav a:hover,
+#commentform input[type="submit"]:hover, 
+input[type="submit"]:hover,
+.logo:hover,
+#more:hover,
+#hoverInfo,
+#infoBtn:hover {background: #003366;}
+#hoverInfo:after {border-color:#003366 transparent transparent transparent;}
+#reference {background: #003366;}
