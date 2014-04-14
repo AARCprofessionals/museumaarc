@@ -10,7 +10,6 @@
 
 			<!-- function to convert colours from hex into rgb -->
 			
-			
 			<!-- Count the number of active widgets -->
 			
 			
@@ -794,49 +793,46 @@
                   <? $sepindex++; $sepcount = 0; ?>
 
 								<? else: ?>
-													
 									<div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
-	    									<div class="post-wrapper inner-image-placeholder">
-	    										<div class="image-link-inner">
-	        	            							<p class="donor">
-	        	            								<?php 
-	        	            								if ($show == 'name'):
-                                          the_title();
-                                        else:
-                                          if (get_field('brick_size') == '1x1'):
-                                            the_field('brick_message');
-                                          else:
-                                            the_field('block_message');
-                                          endif;
-                                        endif;
-	        	            								?>
-	        	            							</p>
-	                    						</div>
-	                    						
-	                    						<?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
-	                							<div class="image-post-overlay">
-	        										<div class="image-post-overlay-in">
-	        											<?php
-	        											if ($show == 'name'):
-														if (get_field('brick_size') == '1x1'):
-															echo '<p>'. the_field('brick_message') .'</p>';
-														else:
-															echo '<p>'. the_field('block_message') .'</p>';
-														endif;
-													else:
-	        												the_title();
-													endif;
-													?>
-	            									</div>
-	                    						</div> 
-	                    						<?php endif; ?>
-	    									</div>
-									</div> 
-								
-								<?php endif;
-								
-							endwhile;
-						endif; ?>
+                    <div class="post-wrapper inner-image-placeholder">
+                      <div class="image-link-inner">
+                          <p class="donor">
+                            <?php
+                            if ($show == 'name'):
+                              the_title();
+                            else:
+                              if (get_field('brick_size') == '1x1'):
+                                the_field('brick_message');
+                              else:
+                                the_field('block_message');
+                              endif;
+                            endif;
+                            ?>
+                          </p>
+                      </div>
+                      <?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
+                        <div class="image-post-overlay">
+                          <div class="image-post-overlay-in">
+                            <?php
+                              if ($show == 'name'):
+                                if (get_field('brick_size') == '1x1'):
+                                  echo '<p>'. the_field('brick_message') .'</p>';
+                                else:
+                                  echo '<p>'. the_field('block_message') .'</p>';
+                                endif;
+                              else:
+                                the_title();
+                              endif;
+                      ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              </div>
+            </div>
+
+          <?php endif; ?>
+				<?php endwhile ?>
+      <?php endif; ?>
 						
 						<!-- post-size-large post-size-2x2 project type-project status-publish format-aside hentry post-single portfolio portfolio post isotope-item -->
 						
@@ -863,8 +859,7 @@
 
 						<!--
 						<div id="post-302" class=" post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="1x1">
-							
-            					<div class="inner-image-placeholder" id="post-302-in" style="background-image: url(http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-portfolio-1.jpg);">
+              <div class="inner-image-placeholder" id="post-302-in" style="background-image: url(http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-portfolio-1.jpg);">
     								<a href="http://satoristudio.net/ikebana/project/new-password-holder-app/">
     									<div class="image-link-inner"></div>
     								</a>
@@ -905,17 +900,17 @@
 							</div>
 						</div><!--.post-single-->                              
         	
-					</div> <!-- portfolio-wrapper -->
-        				<div class="clearboth">
-                			<nav id="page_nav">
-    							<a href="/replacewith_wall-of-donors/page/2"></a>
-  						</nav>
-            			</div>
-				</div>
+          </div> <!-- portfolio-wrapper -->
+            <div class="clearboth">
+              <nav id="page_nav">
+                <a href="/replacewith_wall-of-donors/page/2"></a>
+              </nav>
+            </div>
+          </div>
 
-			</div>
-			<div class="clear"></div>
-    		</div>
+      </div>
+    <div class="clear"></div>
+    </div>
 	</div> <!-- wrapper -->
 
 
