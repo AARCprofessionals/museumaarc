@@ -887,9 +887,8 @@ input[type="password"],
 textarea { 
 border: none;
 padding: 8px 10px;
-background-color: #555555 !important;
 width: 90%;
-color: #999999;
+color: #000000;
 }
 
 input[type="email"],
@@ -1185,20 +1184,6 @@ margin: 3px 0 0 0;
 #respond {
 padding: 30px 0 0 0;
 border-top: 2px dotted #777777;
-}
-
-#respond input#submit,
-.contact-submit input,
-.back-button input,
-input[type="submit"] {
-background-color: #777777;
-cursor: pointer;
-color: #ffffff;
-margin-left: 0;
-width: auto;
-height: auto;
-padding: 8px 13px;
-border: none;
 }
 
 #respond input#submit:hover,
@@ -1844,7 +1829,7 @@ max-width: 100%;
 .post-size-1x1 .message { font-size:20px; }
 .post-size-2x2 .message { font-size:40px; line-height:50px; }
 .post-size-1x1:hover, .post-size-2x2:hover { cursor:pointer; }
-p.donor { margin-bottom:0; padding-top:110px; color:#ffffff; }
+p.donor { margin-bottom:0; padding:110px 10px 0 10px; color:#ffffff; }
 .post-size-2x2 p.donor { font-size:40px; padding-top:250px; }
 
 
@@ -1993,3 +1978,11 @@ h1#theTagline {
     margin: 0;
     padding: 2px 20px 0;
 }
+
+.filters { margin:20px 0 40px 0; position:relative; z-index:9999; }
+.filters input { background-color:#ffffff; width:100px; padding:4px 8px; font-family:'Open Sans',Arial,sans-serif; border:1px solid #999999; }
+.filters select { background-color:#ffffff; width:200px; padding:4px 8px; font-size:16px; font-family:'Open Sans',Arial,sans-serif; border:1px solid #999999; }
+.filters input[type="submit"] { background-color:#00274E; color:#FFFFFF; width:50px; border:0 none; }
+.filters input[type="submit"]:hover { cursor:pointer; }
+.filters .field { float:left; padding-right:30px; }
+.iso-masonry .post { border-radius:10px; }

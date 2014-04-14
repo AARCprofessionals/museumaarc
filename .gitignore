@@ -1,4 +1,8 @@
-.htaccess:
+.Parent
+.htaccess
+.DS_Store
+.AppleDouble
+.AppleDouble/*
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
