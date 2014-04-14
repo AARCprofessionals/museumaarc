@@ -1,8 +1,17 @@
-.Parent
-.htaccess
+*~
 .DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+.Parent
 .AppleDouble
 .AppleDouble/*
+.htaccess
+.htaccess
+wp-config.php
+./wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
@@ -13,5 +22,5 @@ sitemap.xml
 *.log
 wp-content/cache/
 wp-content/backups/
+sitemap.xml
 sitemap.xml.gz
-wp-config.php
