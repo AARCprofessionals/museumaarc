@@ -20,6 +20,7 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 sitemap.xml
 *.log
+*.sql
 wp-content/cache/
 wp-content/backups/
 sitemap.xml
