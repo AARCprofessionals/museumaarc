@@ -4,6 +4,7 @@ add_action( 'init', 'create_post_type' );
 
 function create_post_type() {
 
+
   /*****************************************************?
    * Galleries
    */
@@ -73,47 +74,45 @@ function create_post_type() {
     )
   );
 
-
 }
 
-
-/*****************************************************?
+/**
  * Custom columns for Exhibits
  */
 function change_columns( $cols ) {
-  $cols = array(
-    'cb'		=> '<input type="checkbox" />',
-    'title'	=> __( 'Exhibit Name',      'trans' ),
-    'gallery'	=> __( 'Gallery', 'trans' ),
-    'category' => __( 'Category', 'trans' ),
-    'order' => __( 'Order', 'trans' )
+	$cols = array(
+  		'cb'		=> '<input type="checkbox" />',
+    		'title'	=> __( 'Exhibit Name',      'trans' ),
+    		'gallery'	=> __( 'Gallery', 'trans' ),
+    		'category' => __( 'Category', 'trans' ),
+    		'order' => __( 'Order', 'trans' )
 
-  );
-  return $cols;
+  	);
+  	return $cols;
 }
 add_filter( "manage_arcf_exhibit_posts_columns", "change_columns" );
 
 function custom_columns( $column, $post_id ) {
-  switch ( $column ) {
-    case "title":
-      $title = get_post_meta( $post_id, 'title', true);
-      echo $title;
-      break;
-    case "gallery":
-      $gallery = get_post_meta( $post_id, 'gallery', true);
-      echo get_the_title($gallery);
-      break;
-    case "category":
-      $gallery = get_post_meta( $post_id, 'gallery', true);
-      $cat = get_the_category( get_post_meta( $gallery, 'gallery', true) );
-      echo $cat[0]->name;
-      break;
-    case "order":
-      $p =  get_post($post_id);
-      $order = $p->menu_order;
-      echo $order;
-      break;
-  }
+	switch ( $column ) {
+		case "title":
+			$title = get_post_meta( $post_id, 'title', true);
+			echo $title;
+			break;
+		case "gallery":
+			$gallery = get_post_meta( $post_id, 'gallery', true);
+			echo get_the_title($gallery);
+			break;
+		case "category":
+			$gallery = get_post_meta( $post_id, 'gallery', true);
+			$cat = get_the_category( get_post_meta( $gallery, 'gallery', true) );
+			echo $cat[0]->name;
+			break;
+		case "order":
+			$p =  get_post($post_id);
+			$order = $p->menu_order;
+			echo $order;
+			break;
+	}
 }
 
 add_action( "manage_posts_custom_column", "custom_columns", 10, 2 );

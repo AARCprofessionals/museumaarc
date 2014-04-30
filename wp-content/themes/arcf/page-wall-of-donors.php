@@ -1,5 +1,4 @@
 <?php get_header('donors'); ?>
-
 	<div id="page-background"></div>
 		<div class="none">
 			<p><a href="#content">Skip to Content</a></p>
@@ -577,7 +576,7 @@
 				.pagerbox a { margin-top: 4px; margin-bottom:4px; margin-right:8px; }
 				#container-footer { padding: 70px 40px 40px 40px; }
 				#container-footer, #copyright { margin: 0 4px; }
-				.normal, body, input, blockquote, dropdown-menu-widget .menu, .widget_categories .postform, .widget_archive select { font: 16px 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
+				.normal, body, input, blockquote, .dropdown-menu-widget .menu, .widget_categories .postform, .widget_archive select { font: 16px 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				.serif, cite, h1, h2, h3, h4, h5, h6, .stick-title, .pagerbox a, .pagerbox, .su-heading-shell { font-family: 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				#nav-primary ul a, #nav-secondary ul a, .mobilemenu .dropdown-menu, .mobile-icon-title-text { font-family: 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				.scrolltop, .scrolltop:hover { background-image: url('http://satoristudio.net/ikebana/wp-content/themes/Ikebana/images/to-top-button.png'); }
@@ -689,7 +688,35 @@
 
 		<div id="main-body">
 			<div class="container " id="main-container">
-				<div id="content">
+				<div class="filters">
+					<form method="post" action="" />
+						<div class="field">
+							<label>Search by Date Range</label>
+							<input type="text" class="datepicker" name="from" value="<?php echo $_POST["from"]; ?>" /> to <input type="text" class="datepicker" name="to" value="<?php echo $_POST["to"]; ?>" />
+						</div>
+						<div class="field">
+							<label>Show:</label>
+							<select name="show">
+								<option value="name"<?php if ($_POST["show"]=='name') echo ' selected'; ?>>by the name</option>
+								<option value="dedication"<?php if ($_POST["show"]=='dedication') echo ' selected'; ?>>by the dedication</option>
+							</select>
+						</div>
+						<div class="field">
+							<label>Search:</label>
+							<input type="text" name="search" value="<?php echo $_POST["search"]; ?>" style="width:200px;" />
+						</div>
+						<div class="field">
+							<input type="submit" value="Go" />
+						</div>
+						<div style="clear:both;"></div>
+						 <script>
+							jQuery(document).ready(function($){
+								$( ".datepicker" ).datepicker();
+							});
+						</script>
+					</form>
+				</div>
+				<div id="content" style="padding-bottom:40px;">
 					<div id="portfolio-wrapper">	
 						
 						<?php
@@ -697,13 +724,25 @@
 						$separators = array();
 						$sepcount = 0;
 						$sepindex = 0;
-						
+						$show = $_POST["show"] == 'dedication' ? 'dedication' : 'name';
+						$search = $_POST["search"] != '' ? $_POST["search"] : null;
+						$from = $_POST["from"] != '' ? date("F j, Y", strtotime($_POST["from"])) : null;
+						$to = $_POST["to"] != '' ? date("F j, Y", strtotime($_POST["to"] . "+1 day")) : null;
+
 						//Main Donor Query
 						$args = array(
 						'post_type' => 'arcf_donors',
 						'order_by' => 'id',
 						'order' => 'DESC',
-						'posts_per_page' => 15,
+						'posts_per_page' => -1,
+						's' => $search,
+						'date_query' => array(
+							array(
+								'after' => $from,
+								'before' => $to
+							),
+							'inclusive' => true,
+						),
 						'meta_query' => array(
 							array(
 								'key' => 'type',
@@ -719,7 +758,7 @@
 						'post_type' => 'arcf_donors',
 						'order_by' => 'id',
 						'order' => 'ASC',
-						'posts_per_page' => 15,
+						'posts_per_page' => -1,
 						'meta_query' => array(
 							array(
 								'key' => 'type',
@@ -731,8 +770,10 @@
 						$sepquery = new WP_Query($args);
 
 						if ( $sepquery->have_posts() ): 
-							while ( $sepquery->have_posts() ): $sepquery->the_post();
-								$separators[] = get_field('separator_image'); 
+							while ( $sepquery->have_posts() ):
+
+                $sepquery->the_post();
+                $separators[] = get_field('separator_image');
 							endwhile; 
 						endif;
 
@@ -741,30 +782,48 @@
 							
 								<?php if ($sepcount == 5): ?>
 									
-									<div id="post-290" class=" post-size-1x1 project type-project status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
+									<div id="post-290" class="<?php print $sepindex; ?> post-size-1x1 project type-project status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
 										<div class="inner-image-placeholder" id="post-290-in" style="background-image: url('<?php echo $separators[$sepindex]; ?>');">
-											
-												<div class="image-link-inner"></div>
-											
-   										</div>
+											<div class="image-link-inner"></div>
+										</div>
 									</div>
-									
-								<? $sepindex++; $sepcount = 0; else: ?>
-													
+
+                  <? $sepindex++; $sepcount = 0; ?>
+
+								<? else: ?>
+
 									<div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
 	    									<div class="post-wrapper inner-image-placeholder">
 	    										<div class="image-link-inner">
-	        	            							<p class="donor"><?php the_title(); ?></p>
+	        	            							<p class="donor">
+	        	            								<?php 
+	        	            								if ($show == 'name'):
+                                          the_title();
+                                        else:
+                                          if (get_field('brick_size') == '1x1'):
+                                            the_field('brick_message');
+                                          else:
+                                            the_field('block_message');
+                                          endif;
+                                        endif;
+	        	            								?>
+	        	            							</p>
 	                    						</div>
 	                    						
 	                    						<?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
 	                							<div class="image-post-overlay">
 	        										<div class="image-post-overlay-in">
-	        											<?php if (get_field('brick_size') == '1x1'): ?>
-														<p><?php the_field('brick_message'); ?></p>
-													<?php else: ?>
-														<p><?php the_field('block_message'); ?></p>
-													<?php endif; ?>
+	        											<?php
+	        											if ($show == 'name'):
+														if (get_field('brick_size') == '1x1'):
+															echo '<p>'. the_field('brick_message') .'</p>';
+														else:
+															echo '<p>'. the_field('block_message') .'</p>';
+														endif;
+													else:
+	        												the_title();
+													endif;
+													?>
 	            									</div>
 	                    						</div> 
 	                    						<?php endif; ?>
@@ -842,18 +901,17 @@
 								</div>
 							</div>
 						</div><!--.post-single-->                              
-        	
-					</div> <!-- portfolio-wrapper -->
-        				<div class="clearboth">
-                			<nav id="page_nav">
-    							<a href="/replacewith_wall-of-donors/page/2"></a>
-  						</nav>
-            			</div>
-				</div>
+          </div> <!-- portfolio-wrapper -->
+            <div class="clearboth">
+              <nav id="page_nav">
+                <a href="/replacewith_wall-of-donors/page/2"></a>
+              </nav>
+            </div>
+          </div>
 
-			</div>
-			<div class="clear"></div>
-    		</div>
+      </div>
+    <div class="clear"></div>
+    </div>
 	</div> <!-- wrapper -->
 
 
@@ -870,6 +928,5 @@
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/scripts/isotope/jquery.isotope.perfectmasonry.js?ver=3.8.1'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.easing-1.3.pack.js?ver=1.3'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.mousewheel-3.0.4.pack.js?ver=3.0.4'></script>
-
 
 <?php get_footer('donors'); ?>

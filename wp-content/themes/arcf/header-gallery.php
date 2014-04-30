@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php the_title(); ?></title>
-	
+
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/js/prettyPhoto.css" type="text/css" media="screen" />
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/jquery.js'></script>
