@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php the_title(); ?></title>
-
-  <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/js/prettyPhoto.css" type="text/css" media="screen" />
-	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/jquery.js'></script>
-	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/jquery-migrate.min.js'></script>
+	
+	<link rel="stylesheet" href="/wp-content/themes/arcf/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/wp-content/themes/arcf/js/prettyPhoto.css" type="text/css" media="screen" />
+	<script type='text/javascript' src='/wp-content/themes/arcf/js/jquery.js'></script>
+	<script type='text/javascript' src='/wp-content/themes/arcf/js/jquery-migrate.min.js'></script>
 	
 	<style type="text/css" id="custom-background-css">
-		body.custom-background { background-color: #eeeeee; background-image: url('<?php bloginfo('template_url'); ?>/images/scribble_light.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+		body.custom-background { background-color: #eeeeee; background-image: url('/wp-content/themes/arcf/images/scribble_light.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
 	</style>
 	
 	<!--[if lt IE 8]>

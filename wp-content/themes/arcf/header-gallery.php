@@ -4,13 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php the_title(); ?></title>
 	
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/js/prettyPhoto.css" type="text/css" media="screen" />
-	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/jquery.js'></script>
-	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/jquery-migrate.min.js'></script>
+	<link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/js/prettyPhoto.css" type="text/css" media="screen" />
+	<script type='text/javascript' src='<?php echo bloginfo('template_directory'); ?>/js/jquery.js'></script>
+	<script type='text/javascript' src='<?php echo bloginfo('template_directory'); ?>/js/jquery-migrate.min.js'></script>
 	
 	<style type="text/css" id="custom-background-css">
-		body.custom-background { background-color: #eeeeee; background-image: url('/wp-content/themes/arcf/images/scribble_light.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+		body.custom-background { background-color: #eeeeee; background-image: url('<?php echo bloginfo('template_directory'); ?>/images/scribble_light.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
 	</style>
 	
 	<!--[if lt IE 8]>
@@ -31,7 +31,7 @@
 			<div class="menu-main-container" id="navigation">
 				<ul class="menu" id="dropmenu">
 					<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-93" id="menu-item-93"><a href="/">Home</a></li>
-					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-498" id="menu-item-498"><a href="../gallery/oxygen/">Virtual Museum</a></li>
+					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-498" id="menu-item-498"><a href="/gallery/oxygen/">Virtual Museum</a></li>
 					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-502" id="menu-item-502"><a href="/wall-of-donors/">Wall of Donors</a></li>
 					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-94" id="menu-item-94"><a href="/contact/">Contact</a></li>
 				</ul>
