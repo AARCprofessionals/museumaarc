@@ -1,8 +1,11 @@
 .Parent
 .htaccess
-.DS_Store
+*.sql
+.AppleDouble/
 .AppleDouble
 .AppleDouble/*
+/.AppleDouble/
+wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
@@ -13,5 +16,6 @@ sitemap.xml
 *.log
 wp-content/cache/
 wp-content/backups/
+sitemap.xml
 sitemap.xml.gz
-wp-config.php
+.DS_Store

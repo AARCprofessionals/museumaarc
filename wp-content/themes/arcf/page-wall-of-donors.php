@@ -1,5 +1,4 @@
 <?php get_header('donors'); ?>
-	
 	<div id="page-background"></div>
 		<div class="none">
 			<p><a href="#content">Skip to Content</a></p>
@@ -577,7 +576,7 @@
 				.pagerbox a { margin-top: 4px; margin-bottom:4px; margin-right:8px; }
 				#container-footer { padding: 70px 40px 40px 40px; }
 				#container-footer, #copyright { margin: 0 4px; }
-				.normal, body, input, blockquote, dropdown-menu-widget .menu, .widget_categories .postform, .widget_archive select { font: 16px 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
+				.normal, body, input, blockquote, .dropdown-menu-widget .menu, .widget_categories .postform, .widget_archive select { font: 16px 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				.serif, cite, h1, h2, h3, h4, h5, h6, .stick-title, .pagerbox a, .pagerbox, .su-heading-shell { font-family: 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				#nav-primary ul a, #nav-secondary ul a, .mobilemenu .dropdown-menu, .mobile-icon-title-text { font-family: 'Open Sans', Arial, sans-serif; font-weight: 300 !important; }
 				.scrolltop, .scrolltop:hover { background-image: url('http://satoristudio.net/ikebana/wp-content/themes/Ikebana/images/to-top-button.png'); }
@@ -717,7 +716,7 @@
 						</script>
 					</form>
 				</div>
-				<div id="content" style="padding-bottom:40px;">				
+				<div id="content" style="padding-bottom:40px;">
 					<div id="portfolio-wrapper">	
 						
 						<?php
@@ -778,8 +777,6 @@
 							endwhile; 
 						endif;
 
-
-
 						if ( $subquery->have_posts() ):
 							while ( $subquery->have_posts() ): $subquery->the_post(); $color = $colors[mt_rand(0,2)]; $sepcount++; ?>
 							
@@ -794,7 +791,7 @@
                   <? $sepindex++; $sepcount = 0; ?>
 
 								<? else: ?>
-													
+
 									<div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
 	    									<div class="post-wrapper inner-image-placeholder">
 	    										<div class="image-link-inner">
@@ -904,7 +901,6 @@
 								</div>
 							</div>
 						</div><!--.post-single-->                              
-        	
           </div> <!-- portfolio-wrapper -->
             <div class="clearboth">
               <nav id="page_nav">
@@ -932,6 +928,5 @@
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/scripts/isotope/jquery.isotope.perfectmasonry.js?ver=3.8.1'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.easing-1.3.pack.js?ver=1.3'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.mousewheel-3.0.4.pack.js?ver=3.0.4'></script>
-
 
 <?php get_footer('donors'); ?>

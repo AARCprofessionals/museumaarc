@@ -881,16 +881,6 @@ line-height: 50px;
 margin-right: 30px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea { 
-border: none;
-padding: 8px 10px;
-width: 90%;
-color: #000000;
-}
-
 input[type="email"],
 input[type="password"] {
 width: auto !important;	
@@ -1184,6 +1174,20 @@ margin: 3px 0 0 0;
 #respond {
 padding: 30px 0 0 0;
 border-top: 2px dotted #777777;
+}
+
+#respond input#submit,
+.contact-submit input,
+.back-button input,
+input[type="submit"] {
+background-color: #777777;
+cursor: pointer;
+color: #ffffff;
+margin-left: 0;
+width: auto;
+height: auto;
+padding: 8px 13px;
+border: none;
 }
 
 #respond input#submit:hover,
@@ -1986,3 +1990,4 @@ h1#theTagline {
 .filters input[type="submit"]:hover { cursor:pointer; }
 .filters .field { float:left; padding-right:30px; }
 .iso-masonry .post { border-radius:10px; }
+

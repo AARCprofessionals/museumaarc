@@ -3,83 +3,82 @@
 add_action( 'init', 'create_post_type' );
 
 function create_post_type() {
-	
-	/*****************************************************?
-	 * Galleries
-	 */
-	register_post_type( 'arcf_gallery',
-		array(
-			'labels' => array(
-				'name' => __( 'Galleries' ),
-				'singular_name' => __( 'Gallery' )
-			),
-		'public' => true,
-		'has_archive' => true,
-		'show_in_nav_menus' => false,
-		'menu_position' => 100,
-		'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-galleries.png',
-		'supports' => array('title','editor','thumbnail','excerpt','custom-fields','page-attributes'),
-		'rewrite' => array( 'slug' => 'gallery' ),
-		'taxonomies' => array('category'),
-		'hierarchical' => true
-		)
-	);
-	
-	
-	/*****************************************************?
-	 * Exhibits
-	 */
-	register_post_type( 'arcf_exhibit',
-		array(
-			'labels' => array(
-				'name' => __( 'Exhibits' ),
-				'singular_name' => __( 'Exhibits' )
-			),
-		'public' => true,
-		'has_archive' => true,
-		'show_in_nav_menus' => false,
-		'menu_position' => 100,
-		'heirarchial' => false,
-		'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-exhibits.png',
-		'supports' => array('title','editor','thumbnail','excerpt','custom-fields','page-attributes'),
-		'rewrite' => array( 'slug' => 'exhibit' ),
-		'taxonomies' => array('category')
-		)
-	);
-	
-	/*****************************************************?
-	 * Donors
-	 */
-	register_post_type( 'arcf_donors',
-		array(
-			'labels' => array(
-				'name' => __( 'Donors' ),
-				'singular_name' => __( 'Donors' ),
-				'add_new_item' => __( 'Add New Donor' ),
-				'edit_item' => __( 'Edit Donor' ),
-				'add_new' => __( 'New Donor' ),
-				'new_item' => __( 'New Donor' ),
-				'view_item' => __( 'View Donor' ),
-				'not_found' => __( 'No Donors found' )
-			),
-		'public' => true,
-		'has_archive' => true,
-		'show_in_nav_menus' => false,
-		'menu_position' => 100,
-		'heirarchial' => false,
-		'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-hand.png',
-		'supports' => array('title','editor','custom-fields','page-attributes'),
-		'rewrite' => array( 'slug' => 'donors' )
-		)
-	);
-	
+
+
+  /*****************************************************?
+   * Galleries
+   */
+  register_post_type( 'arcf_gallery',
+    array(
+      'labels' => array(
+        'name' => __( 'Galleries' ),
+        'singular_name' => __( 'Gallery' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_nav_menus' => false,
+      'menu_position' => 100,
+      'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-galleries.png',
+      'supports' => array('title','editor','thumbnail','excerpt','custom-fields','page-attributes'),
+      'rewrite' => array( 'slug' => 'gallery' ),
+      'taxonomies' => array('category'),
+      'hierarchical' => true
+    )
+  );
+
+
+  /*****************************************************?
+   * Exhibits
+   */
+  register_post_type( 'arcf_exhibit',
+    array(
+      'labels' => array(
+        'name' => __( 'Exhibits' ),
+        'singular_name' => __( 'Exhibits' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_nav_menus' => false,
+      'menu_position' => 100,
+      'heirarchial' => false,
+      'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-exhibits.png',
+      'supports' => array('title','editor','thumbnail','excerpt','custom-fields','page-attributes'),
+      'rewrite' => array( 'slug' => 'exhibit' ),
+      'taxonomies' => array('category')
+    )
+  );
+
+  /*****************************************************?
+   * Donors
+   */
+  register_post_type( 'arcf_donors',
+    array(
+      'labels' => array(
+        'name' => __( 'Donors' ),
+        'singular_name' => __( 'Donors' ),
+        'add_new_item' => __( 'Add New Donor' ),
+        'edit_item' => __( 'Edit Donor' ),
+        'add_new' => __( 'New Donor' ),
+        'new_item' => __( 'New Donor' ),
+        'view_item' => __( 'View Donor' ),
+        'not_found' => __( 'No Donors found' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_nav_menus' => false,
+      'menu_position' => 100,
+      'heirarchial' => false,
+      'menu_icon' => '/wp-content/themes/arcf/images/icons/ico-hand.png',
+      'supports' => array('title','editor','custom-fields','page-attributes'),
+      'rewrite' => array( 'slug' => 'donors' )
+    )
+  );
 
 }
 
-
-/*****************************************************?
-* Custom columns for Exhibits
-*/
+/**
+ * Custom columns for Exhibits
+ */
 function change_columns( $cols ) {
 	$cols = array(
   		'cb'		=> '<input type="checkbox" />',
@@ -87,7 +86,7 @@ function change_columns( $cols ) {
     		'gallery'	=> __( 'Gallery', 'trans' ),
     		'category' => __( 'Category', 'trans' ),
     		'order' => __( 'Order', 'trans' )
-    		
+
   	);
   	return $cols;
 }

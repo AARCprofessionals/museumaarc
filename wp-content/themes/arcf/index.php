@@ -154,12 +154,11 @@
      	<!-- Section Title -->
         	<div class="section row nomargin">
         		<div class="desktop-full tablet-full mobile-full">
-               	<h1 class="section-title">Current Galleries</h1>
-              	</div>
+              <h1 class="section-title">Current Galleries</h1>
+            </div>
         	</div>
         	<!-- End title -->
 
-			
 			
 
   		<div class="fluidHeight_sponsors" style="margin:auto; width:240px;">   
@@ -181,7 +180,7 @@
 									<img alt="image" src="<?php echo $path; ?>/images/icons/ico-airway-management.png">
 								</a>
 							</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2160, 0); width: 240px; opacity:0.3;">       
+              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2160, 0); width: 240px; opacity:0.3;">
                 				<a class="img_wrapper">  
                 					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-aerosol-therapy.png">
                 					</a>
@@ -215,9 +214,8 @@
                 				<a class="img_wrapper">  
                 					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-monitoring-assessment.png">
                 				</a>
-              				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 0, 0); width: 240px;">       
-                				<a class="img_wrapper">  
+              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1900, 0); width: 240px;">
+                				<a class="img_wrapper">
                 					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-oxygen-therapy.png">
                 				</a>
               				</div>
@@ -235,15 +233,14 @@
 				</div>
 			</div>
 			-->
+
       	</div> <!-- End Fluidwith -->
   
 
 	</div>
-	<!-- End Container --> 
-	<!--
+	<!-- End Container -->
 	<div class="controls-sponsors next" style="cursor: pointer;"></div>
 	<div class="controls-sponsors prev" style="cursor: pointer;"></div>
-	-->
 </section>
 
 <!--
