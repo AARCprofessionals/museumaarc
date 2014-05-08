@@ -11,10 +11,10 @@
       <div id="timeline">
 
         <?php
+        $url_slug = $wp_the_query->query_vars['arcf_gallery'];
 
-        $gallery_slug = 'oxygen';
-        $gallery_id = get_posts('name='.$gallery_slug.'&post_type=arcf_gallery');
-        $category_id = get_term_by('slug', $gallery_slug, 'category', ARRAY_N);
+        $gallery_id = get_posts('name='.$url_slug.'&post_type=arcf_gallery');
+        $category_id = get_term_by('slug', $url_slug, 'category', ARRAY_N);
 
         $categories = $wpdb->get_results( $wpdb->prepare("SELECT t.term_id, t.name, t.slug FROM wp_terms t INNER JOIN wp_term_taxonomy tx ON t.term_id = tx.term_id WHERE tx.parent = %d ORDER BY t.term_order", $category_id[0]) );
 
