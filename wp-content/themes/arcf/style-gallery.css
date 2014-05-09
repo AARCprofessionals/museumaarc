@@ -123,6 +123,7 @@
 	background-color:#ffffff;
 }
 .event img {width:auto; height:350px; display:block;}
+.event .image-placeholder {width: 300px;}
 .event iframe {display:block; height:350px;}
 .eventDetails {
 	height:400px;

@@ -49,11 +49,21 @@
         $subquery->the_post();
         ?>
           <div class="event">
-            <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
-            <img src="<?php echo get_field('exhibit_image'); ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
-            </a>
-            <div class="eventDetails">
-              <h2 class="closed"><?php the_title(); ?></h2>
+            <?php $image = get_field('exhibit_image');
+            if (!empty($image)): ?>
+              <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
+
+                <img src="<?php echo $image; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
+              </a>
+
+            <?php else: ?>
+              <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
+                <div class="image-placeholder"> </div>
+              </a>
+            <?php endif; ?>
+
+            <div class="eventDetails" <?php if (empty($image)){echo 'style="top: 0px;"';} ?>>
+              <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php the_title(); ?></h2>
               <div class="eventInfo">
                 <p><?php echo get_field('description'); ?></p>
                 <p><?php echo get_field('image_credit'); ?></p>

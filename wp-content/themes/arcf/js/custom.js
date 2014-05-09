@@ -226,16 +226,16 @@ jQuery(document).ready(function(){
 	////////////////
 	//TITLE CLICK
 	////////////////
-	jQuery('.eventDetails h2').toggle(function(){
-		jQuery(this).parent().stop(true,true).animate({top:"0"},300);
-		jQuery(this).removeClass('closed');
-		jQuery(this).addClass('open');
-	},function(){
-		jQuery(this).parent().stop(true,true).animate({top:"350px"},300);
-		jQuery(this).removeClass('open');
-		jQuery(this).addClass('closed');
-	});
-	
+  jQuery('.eventDetails h2.has-image').toggle(function(){
+    jQuery(this).parent().stop(true,true).animate({top:"0"},300);
+    jQuery(this).removeClass('closed');
+    jQuery(this).addClass('open');
+  },function(){
+    jQuery(this).parent().stop(true,true).animate({top:"350px"},300);
+    jQuery(this).removeClass('open');
+    jQuery(this).addClass('closed');
+  });
+
 	////////////////
 	//LEFT CLICK FUNCTION
 	////////////////
