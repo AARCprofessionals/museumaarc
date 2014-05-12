@@ -23,6 +23,7 @@ body.search h2.posttitle:before,
 .nextPrevItem > a:before {border-color:transparent #ffffff transparent transparent;}
 .nextPrevItem > a.alignright:before {border-color:transparent transparent transparent #ffffff;}
 
+.event.noimage .eventDetails .eventInfo, .event.noimage .eventDetails h2 {background: none transparent;}
 /*ACCENT COLOR STUFF*/
 a {color:#ffffff;}
 #navigation ul li a:hover { color:#003366; background-color:#ffffff; }

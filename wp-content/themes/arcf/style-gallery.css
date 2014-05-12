@@ -122,6 +122,10 @@
 	box-shadow:0 1px 1px rgba(0,0,0,.1);
 	background-color:#ffffff;
 }
+.event.noimage {
+    box-shadow: inset 0 -2px 0px 10px rgba(213, 213, 213, 1);
+}
+
 .event img {width:auto; height:350px; display:block;}
 .event .image-placeholder {width: 300px;}
 .event iframe {display:block; height:350px;}
