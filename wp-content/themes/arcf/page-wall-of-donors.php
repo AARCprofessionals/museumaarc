@@ -4,32 +4,20 @@
 			<p><a href="#content">Skip to Content</a></p>
 		</div><!--.none-->
 		<div id="main"><!-- this encompasses the top of the website -->
-    
 			<!-- Header functions -->
-
 			<!-- function to convert colours from hex into rgb -->
-			
-			
 			<!-- Count the number of active widgets -->
-			
-			
-			<!--[if IE 7]>
+    <!--[if IE 7]>
 			<link rel="stylesheet" href="http://satoristudio.net/ikebana/wp-content/themes/Ikebana/ie8.css">
 			<style type="text/css"> #footer-widget-area .widget-footer { width: 20%; } </style>
 			<![endif]-->
-			
-			
 			<!--[if IE 8]>
 			<link rel="stylesheet" href="http://satoristudio.net/ikebana/wp-content/themes/Ikebana/ie8.css">
 			<style type="text/css"> #footer-widget-area .widget-footer { width: 20%; } </style>
 			<![endif]-->
-
-
 			<!-- Resize image background -->
-			
-			
 			<!-- Scroll to top button -->
-			<script type='text/javascript'> 
+			<script type='text/javascript'>
 			var totop = "Scroll Back to Top";
 			var scrolltotop={
 				//startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
@@ -38,27 +26,27 @@
 				controlHTML: '<div class="scrolltop"></div>', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
 				controlattrs: {offsetx:63, offsety:10}, //offset of control relative to right/ bottom of window corner
 				anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
-			
+
 				state: {isvisible:false, shouldvisible:false},
-			
+
 				scrollup:function(){
 					if (!this.cssfixedsupport) //if control is positioned using JavaScript
 						this.$control.css({opacity:0}) //hide control immediately after clicking it
 					var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto)
 					if (typeof dest=="string" && jQuery('#'+dest).length==1) //check element set by string exists
-						dest=jQuery('#'+dest).offset().top
+            dest=jQuery('#'+dest).offset().top
 					else
 						dest=0
 					this.$body.animate({scrollTop: dest}, this.setting.scrollduration);
 				},
-			
+
 				keepfixed:function(){
 					var $window=jQuery(window)
 					var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx
 					var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety
 					this.$control.css({left:controlx+'px', top:controly+'px'})
 				},
-			
+
 				togglecontrol:function(){
 					var scrolltop=jQuery(window).scrollTop()
 					if (!this.cssfixedsupport)
@@ -73,7 +61,7 @@
 						this.state.isvisible=false
 					}
 				},
-				
+
 				init:function(){
 					jQuery(document).ready(function($){
 						var mainobj=scrolltotop
@@ -778,20 +766,19 @@
 						endif;
 
 						if ( $subquery->have_posts() ):
-							while ( $subquery->have_posts() ): $subquery->the_post(); $color = $colors[mt_rand(0,2)]; $sepcount++; ?>
+  							while ( $subquery->have_posts() ): $subquery->the_post(); $color = $colors[mt_rand(0,2)]; $sepcount++; ?>
 							
 								<?php if ($sepcount == 5): ?>
-									
+									<?php  $sepindex++; ?>
 									<div id="post-290" class="<?php print $sepindex; ?> post-size-1x1 project type-project status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
 										<div class="inner-image-placeholder" id="post-290-in" style="background-image: url('<?php echo $separators[$sepindex]; ?>');">
 											<div class="image-link-inner"></div>
 										</div>
 									</div>
 
-                  <? $sepindex++; $sepcount = 0; ?>
+                  <?php $sepcount = 0; ?>
 
 								<? else: ?>
-
 									<div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
 	    									<div class="post-wrapper inner-image-placeholder">
 	    										<div class="image-link-inner">
@@ -810,23 +797,23 @@
 	        	            							</p>
 	                    						</div>
 	                    						
-	                    						<?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
-	                							<div class="image-post-overlay">
+                            <?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
+                              <div class="image-post-overlay">
 	        										<div class="image-post-overlay-in">
 	        											<?php
-	        											if ($show == 'name'):
-														if (get_field('brick_size') == '1x1'):
-															echo '<p>'. the_field('brick_message') .'</p>';
-														else:
-															echo '<p>'. the_field('block_message') .'</p>';
-														endif;
-													else:
-	        												the_title();
-													endif;
-													?>
+	        											    if ($show == 'name'):
+                                      if (get_field('brick_size') == '1x1'):
+                                        echo '<p>'. the_field('brick_message') .'</p>';
+                                      else:
+                                        echo '<p>'. the_field('block_message') .'</p>';
+                                      endif;
+                                    else:
+                                      the_title();
+                                    endif;
+													          ?>
 	            									</div>
-	                    						</div> 
-	                    						<?php endif; ?>
+	                    				</div>
+	                    	    <?php endif; ?>
 	    									</div>
 									</div> 
 								
