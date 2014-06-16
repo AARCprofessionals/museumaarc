@@ -44,7 +44,7 @@
         $subquery = new WP_Query($args);
 
         if ( $subquery->have_posts() ):
-        echo '<div class="divider"><p>'.str_replace(' ', '<br />', $category->name).'</p></div>';
+        echo '<div class="divider event"><p>'.str_replace(' ', '<br />', $category->name).'</p></div>';
         while ( $subquery->have_posts() ):
         $subquery->the_post();
         ?>
