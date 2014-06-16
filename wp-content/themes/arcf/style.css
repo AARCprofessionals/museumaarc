@@ -91,8 +91,8 @@ body {
 #main {padding:60px; width:495px; margin:78px auto 80px; box-shadow:0 1px 1px rgba(0,0,0,.1); position:relative;}
 
 /* -----HTML TAGS 'N STUFF----- */
-a {text-decoration:none; color:blue;}
-a:hover {text-decoration:underline;}
+a {text-decoration:none; color:#00274e;}
+a:hover {text-decoration:none;}
 a[href$='jpg']:hover,
 a[href$='png']:hover,
 a[href$='gif']:hover {cursor:url(images/cursors/mag_glass.png),pointer;}
@@ -693,6 +693,8 @@ footer .menu ul {
 footer .menu ul li a {
     color: #FFFFFF;
 }
+.gallery-margin { margin: 1em 0; }
+
 
 
 
@@ -711,6 +713,7 @@ footer .menu ul li a {
 	font-family:montserratbold;
 }
 #dropmenu li a:hover {text-decoration:none;}
+#navigation ul li#menu-item-plugs a { color:#003366; background-color:#ffffff; display: inline; border-radius: 3px; padding:3px; font-weight: normal; font-size: 12px; margin: 0 20px; }
 #dropmenu ul {
 	list-style:none; 
 	position:absolute; 
@@ -745,9 +748,9 @@ footer .menu ul li a {
  	-webkit-transition-duration:0.15s;  
  	-webkit-transition-timing-function:linear; 
  	
- 	-o-transition-property:opacity;  
- 	-o-transition-duration:0.15s;  
- 	-o-transition-timing-function:linear;   
+ 	-o-transition-property:opacity;
+ 	-o-transition-duration:0.15s;
+ 	-o-transition-timing-function:linear;
 
 }
 #dropmenu > li.current-menu-item a:after,

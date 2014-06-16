@@ -4,14 +4,7 @@
 .wp-caption-text,
 .gallery-caption,
 .wp-caption {}
-
-
-/*------- RESPONSIVE NAVIGATION STUFF --------
-@media screen and (max-width:890px) {
-	#navigation {display:none;}
-	#selectMenu {display:block;}
-}
-*/
+/*------- RESPONSIVE NAVIGATION STUFF --------*/
 
 #wrapper { overflow:hidden; }
 
@@ -34,12 +27,12 @@
 	top:0; 
 	height:28px;  
 	font:normal 9px/28px sans-serif; 
-	z-index:2001; 
+	z-index:2001;
 	text-transform:uppercase; 
 	letter-spacing:.5px;
 	color:#fff;
-	padding:0 0 0 15px;
-	width:85px;
+    padding:0 0 0 15px;
+    width:85px;
 }
 #more:hover {color:#fff}
 #more.openMe:after {
@@ -230,17 +223,17 @@
 
 #hoverInfo,
 #markerInfo {
-	font:bold 12px/28px sans-serif; 
-	height:48px;  
-	text-align:center; 
-	color:#fff; 
-	display:inline-block;
-	position:absolute;
-	width:150px;
-	letter-spacing:0;
-	z-index:1000;
-	top:-64px;
-	left:-39px;
+    font: bold 12px/28px sans-serif;
+    height: 75px;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    position: absolute;
+    width: 160px;
+    letter-spacing: 0;
+    z-index: 1000;
+    top: -93px;
+    left: -39px;
 }
 #hoverInfo {margin-left:-43px; top:-43px; z-index:2000; opacity:0;}
 

@@ -26,10 +26,10 @@
             $feature_image = get_field( 'feature_image' );
       ?>
       <!-- Content -->
-      <div class="section row exhibit">
+      <div class="section row gallery-margin">
         <div class="col three mobile-full highlighted">
           <?php if ( !empty($feature_image) ): ?>
-            <img src="<?php echo $feature_image['sizes']['medium']; ?>" class="" width="100%" />
+            <a href="<?php echo $post->guid ?>"><img src="<?php echo $feature_image['sizes']['medium']; ?>" class="" width="100%" /></a>
           <?php else: ?>
             <h5><em>Image not found</em></h5>
           <?php endif; ?>
@@ -38,7 +38,6 @@
           <!-- Text for Desktop -->
           <div>
             <h3 style="text-transform: uppercase"><a href="<?php echo $post->guid ?>"><?php echo $post->post_title; ?></a></h3>
-            <h4><?php echo date("M d, Y", strtotime($post->post_date)); ?></h4>
             <p class="underline showdesktop-inline">
               <?php echo $post->post_content; ?>
             </p>
