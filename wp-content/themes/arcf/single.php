@@ -5,20 +5,16 @@
 
     <div class="sidebar" id="left"></div>
     <div class="sidebar" id="right"></div>
-
     <div id="timelineWrapper">
-
       <div id="timeline">
 
         <?php
         $url_slug = $wp_the_query->query_vars['arcf_gallery'];
-
         $gallery_id = get_posts('name='.$url_slug.'&post_type=arcf_gallery');
         $category_id = get_term_by('slug', $url_slug, 'category', ARRAY_N);
-
         $categories = $wpdb->get_results( $wpdb->prepare("SELECT t.term_id, t.name, t.slug FROM wp_terms t INNER JOIN wp_term_taxonomy tx ON t.term_id = tx.term_id WHERE tx.parent = %d ORDER BY t.term_order", $category_id[0]) );
 
-        foreach ($categories as $category)	{
+        foreach ($categories as $category) {
 
         $args = array(
           'post_type' => 'arcf_exhibit',
@@ -48,15 +44,20 @@
         while ( $subquery->have_posts() ):
         $subquery->the_post();
         ?>
+          <?php
+            $title = html_entity_decode(get_the_title());
+            $title = year_match($title);
+          ?>
+
           <?php $image = get_field('exhibit_image');?>
           <div class="event <?php if (empty($image)): echo 'noimage'; endif; ?>">
             <?php
             if (!empty($image)):
               ?>
             <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
+              <img src="<?php echo $image; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
+            </a>
 
-                <img src="<?php echo $image; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
-              </a>
 
             <?php else: ?>
               <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
@@ -65,11 +66,10 @@
             <?php endif; ?>
 
             <div class="eventDetails" <?php if (empty($image)){echo 'style="top: 0px;"';} ?>>
-              <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php the_title(); ?></h2>
+              <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php echo $title; ?></h2>
               <div class="eventInfo">
                 <p><?php echo get_field('description'); ?></p>
                 <p><?php echo get_field('image_credit'); ?></p>
-                <a class="readMore" href="">Read More &rarr;</a>
                 <!--
                 <a title="ginevra_details1" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details1.png"></a>
                 <a title="ginevra_details3" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details3.png"></a>
