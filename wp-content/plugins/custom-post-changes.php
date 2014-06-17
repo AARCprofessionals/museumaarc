@@ -122,3 +122,9 @@ function custom_columns( $column, $post_id ) {
 }
 
 add_action( "manage_posts_custom_column", "custom_columns", 10, 2 );
+
+// Adds a shortcode for adding urls to posts
+function add_url_shortcode( $atts, $content = null  ){
+  return '<a href="' . $atts['url'] . '" >' . $content . '</a>';
+}
+add_shortcode( 'url', 'add_url_shortcode' );

@@ -175,12 +175,26 @@
     left: 0px;
     width: 85px;
     padding: 3px 5px;
+    margin-right: 5px;
     z-index: 1000;
     height: 393px;
     background: none repeat scroll 0 0 #6391B5!important;
 }
 
-.divider p { line-height:130%; padding-top:10px; letter-spacing:0; font-size:14px; }
+.divider p {
+    line-height:130%;
+    padding-top:10px;
+    letter-spacing:0;
+    font-size:14px;
+    word-wrap: break-word;
+    white-space: initial;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
 .divider:first-child {margin-left:0;}
 
 /*---TIMELINE REFERENCE---*/

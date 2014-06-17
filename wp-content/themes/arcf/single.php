@@ -68,14 +68,8 @@
             <div class="eventDetails" <?php if (empty($image)){echo 'style="top: 0px;"';} ?>>
               <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php echo $title; ?></h2>
               <div class="eventInfo">
-                <p><?php echo get_field('description'); ?></p>
+                <p><?php echo ( do_shortcode( get_field('description') ) ); ?></p>
                 <p><?php echo get_field('image_credit'); ?></p>
-                <!--
-                <a title="ginevra_details1" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details1.png"></a>
-                <a title="ginevra_details3" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details3.png"></a>
-                <a title="ginevra_details2" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details2.png"></a>
-                <a title="ginevra_details4" class="attachmentGallery" rel="prettyPhoto[gallery6]" href="/files/1474/05/ginevra_details4.png"></a>
-                -->
               </div>
             </div>
           </div>
