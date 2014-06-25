@@ -151,111 +151,47 @@
 
 <section class="sponsors-section">
 	<div class="container-full">
-     	<!-- Section Title -->
-        	<div class="section row nomargin">
-        		<div class="desktop-full tablet-full mobile-full">
-              <h1 class="section-title">Current Galleries</h1>
-            </div>
-        	</div>
-        	<!-- End title -->
+    <!-- Section Title -->
+    <div class="section row nomargin">
+      <div class="desktop-full tablet-full mobile-full">
+        <h1 class="section-title">Current Galleries:</h1>
+      </div>
+    </div>
+    <div class="fluidHeight">
+      <div class="sliderContainer gallery-list">
+        <div class="iosSlider_sponsors" style="position: relative; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 100%; height: 308px;">
+          <div class="slider" style="position: relative; cursor: move; transform: matrix(1, 0, 0, 1, -5760, 0); width: 200px;">
 
-			
+            <?php
 
-  		<div class="fluidHeight_sponsors row" style="">
-      <?php
+              $args = array(
+                'post_type' => 'arcf_gallery',
+                'order_by' => 'menu_order',
+                'posts_per_page' => -1
+              );
+              $subquery = get_posts( $args );
 
-      $args = array(
-        'post_type' => 'arcf_gallery',
-        'order_by' => 'menu_order',
-        'posts_per_page' => -1
-      );
-      $subquery = get_posts( $args );
+            ?>
+            <?php if ( $subquery ): ?>
+              <?php foreach ( $subquery as $post ) : setup_postdata( $post ); ?>
+                <?php $feature_image = get_field( 'feature_icon' ); ?>
 
-      if ( $subquery ):
-        foreach ( $subquery as $post ) : setup_postdata( $post );
-          $feature_image = get_field( 'feature_icon' );
-          ?>
+                <div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 0, 0); width: 150px;">
+                  <a class="img_wrapper" href="<?php echo $post->guid; ?>" style="">
+                    <img alt="image" src="<?php echo $feature_image['sizes']['thumbnail']; ?>" style="vertical-align: 10px; width: 100px;">
+                  </a>
+                  <h5 style=""><a href="<?php echo $post->guid; ?>"><?php echo $post->post_title; ?></a></h5>
+                </div>
 
-			<div class="item col two" style="text-align: center;">
-				<a class="img_wrapper" href="<?php echo $post->guid; ?>" style="">
-					<img alt="image" height="75" src="<?php echo $feature_image['sizes']['thumbnail']; ?>" style="vertical-align: 10px;">
-				</a>
-        <h4 width="75px" style=""><?php echo $post->post_title; ?></h4>
-			</div>
-
-      <?php endforeach;
-        endif;?>
-			
-			<!--
-     		<div class="sliderContainer">        
-        			<div class="iosSlider_sponsors" style="position: relative; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 240px; height: 120px;">    
-          			<div class="sponsor" style="position: relative; cursor: move; transform: matrix(1, 0, 0, 1, -1440, 0); width: 240px;">
-							<!--
-							<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1920, 0); width: 240px; opacity:0.3;">       
-								<a class="img_wrapper">  
-									<img alt="image" src="<?php echo $path; ?>/images/icons/ico-airway-management.png">
-								</a>
-							</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2160, 0); width: 240px; opacity:0.3;">
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-aerosol-therapy.png">
-                					</a>
-            				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2400, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-diagnostics.png">
-                				</a>
-              				</div>
-                 			<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2640, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-disease-management.png">
-                				</a>
-            				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2880, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-history.png">
-                				</a>
-            				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1200, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-international.png">
-                				</a>
-              				</div>
-                 			<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1440, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-legends.png">
-                				</a>
-            				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1680, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-monitoring-assessment.png">
-                				</a>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 1900, 0); width: 240px;">
-                				<a class="img_wrapper">
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-oxygen-therapy.png">
-                				</a>
-              				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2140, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-smoking-cessation.png">
-                				</a>
-              				</div>
-              				<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 2380, 0); width: 240px; opacity:0.3;">       
-                				<a class="img_wrapper">  
-                					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-ventilatory-support.png">
-                				</a>
-              				</div>
-            			</div>
-				</div>
-			</div>
-			-->
-
-      	</div> <!-- End Fluidwith -->
-  
-
+              <?php endforeach; ?>
+            <?php endif;?>
+          </div>
+        </div>
+      </div>
+    </div>
 	</div>
 	<!-- End Container -->
-	<div class="controls-sponsors next" style="cursor: pointer;"></div>
+  <div class="controls-sponsors next" style="cursor: pointer;"></div>
 	<div class="controls-sponsors prev" style="cursor: pointer;"></div>
 </section>
 

@@ -429,10 +429,20 @@ img {
     z-index: 9999;
     box-shadow:0 -2px 5px rgba(0, 0, 0, 0.5)
 }
+
+/* ios slider styles */
 .sliderContainer {
     height: 100%;
     position: absolute;
     width: 100%;
+}
+.sliderContainer.gallery-list .iosSlider_sponsors .slider .item {
+    height: 170px;
+    width: 170px;
+}
+.sliderContainer.gallery-list .iosSlider_sponsors .slider .item h5{
+    width: 100px;
+    text-align: center;
 }
 .iosSlider {
     height: 100%;
