@@ -195,13 +195,4 @@
 	<div class="controls-sponsors prev" style="cursor: pointer;"></div>
 </section>
 
-<!--
-<section class="threed-section" id="tour">
-	<div class="container-full">
-    		<h5>Have a look at our amazing Oxygen gallery</h5>
-    		<a href="/gallery/oxygen/" class="btn">Check it out</a>
-  	</div>
-</section>
--->
-
 <?php get_footer(); ?>
