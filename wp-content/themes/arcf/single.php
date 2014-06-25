@@ -7,7 +7,6 @@
     <div class="sidebar" id="right"></div>
     <div id="timelineWrapper">
       <div id="timeline">
-
         <?php
         $url_slug = $wp_the_query->query_vars['arcf_gallery'];
         $gallery_id = get_posts('name='.$url_slug.'&post_type=arcf_gallery');
@@ -40,7 +39,7 @@
         $subquery = new WP_Query($args);
 
         if ( $subquery->have_posts() ):
-        echo '<div class="divider event"><p>'.str_replace(' ', '<br />', $category->name).'</p></div>';
+        echo '<div class="divider event"><p>'. $category->name .'</p></div>';
         while ( $subquery->have_posts() ):
         $subquery->the_post();
         ?>
