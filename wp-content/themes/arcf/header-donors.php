@@ -33,7 +33,10 @@
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 	<!-- Advanced SEO Options -->
-	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<style type="text/css">
+    .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+    #navigation ul li#menu-item-plugs a { color:#003366; background-color:#ffffff; display: inline; border-radius: 3px; padding:3px; font-weight: normal; font-size: 12px; margin: 0 20px; }
+  </style>
 
 	<!-- Easy FancyBox 1.3.4.9 using FancyBox 1.3.4 -->
 	<script type="text/javascript">
@@ -63,14 +66,7 @@
 		
 		<div id="header">
 			<h1 id="theTagline"><img src="<?php bloginfo('template_url'); ?>/images/header-logo.png" /></h1>
-			<div class="menu-main-container" id="navigation">
-				<ul class="menu" id="dropmenu">
-					<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-93" id="menu-item-93"><a href="/">Home</a></li>
-					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-498" id="menu-item-498"><a href="../gallery/oxygen/">Virtual Museum</a></li>
-					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-502" id="menu-item-502"><a href="/wall-of-donors/">Wall of Donors</a></li>
-					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-94" id="menu-item-94"><a href="/contact/">Contact</a></li>
-				</ul>
-			</div>
+        <?php include('menu.php'); ?>
 			<div class="clear"></div>
 		</div>
 	

@@ -24,9 +24,14 @@ body.search h2.posttitle:before,
 .nextPrevItem > a.alignright:before {border-color:transparent transparent transparent #ffffff;}
 
 .event.noimage .eventDetails .eventInfo, .event.noimage .eventDetails h2 {background: none transparent;}
+
+.event.noimage .eventDetails .eventInfo p {font-size: 16px;}
+
+.eventInfo p a, .eventInfo a {color: #6391B5;}
 /*ACCENT COLOR STUFF*/
 a {color:#ffffff;}
 #navigation ul li a:hover { color:#003366; background-color:#ffffff; }
+
 #dropmenu ul {border-top-color:#003366;}
 .widget h2:before {border-color:#003366 transparent transparent transparent;}
 .widget_tag_cloud a,

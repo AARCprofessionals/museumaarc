@@ -161,14 +161,30 @@
 
 			
 
-  		<div class="fluidHeight_sponsors" style="margin:auto; width:240px;">   
+  		<div class="fluidHeight_sponsors row" style="">
+      <?php
 
+      $args = array(
+        'post_type' => 'arcf_gallery',
+        'order_by' => 'menu_order',
+        'posts_per_page' => -1
+      );
+      $subquery = get_posts( $args );
 
-			<div class="item" style="position: absolute; top: 0px; transform: matrix(1, 0, 0, 1, 0, 0); width: 240px;">       
-				<a class="img_wrapper" href="/gallery/oxygen/">  
-					<img alt="image" src="<?php echo $path; ?>/images/icons/ico-oxygen-therapy.png">
+      if ( $subquery ):
+        foreach ( $subquery as $post ) : setup_postdata( $post );
+          $feature_image = get_field( 'feature_icon' );
+          ?>
+
+			<div class="item col two" style="text-align: center;">
+				<a class="img_wrapper" href="<?php echo $post->guid; ?>" style="">
+					<img alt="image" height="75" src="<?php echo $feature_image['sizes']['thumbnail']; ?>" style="vertical-align: 10px;">
 				</a>
+        <h4 width="75px" style=""><?php echo $post->post_title; ?></h4>
 			</div>
+
+      <?php endforeach;
+        endif;?>
 			
 			<!--
      		<div class="sliderContainer">        
