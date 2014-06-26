@@ -51,16 +51,12 @@
 
           <?php $image = get_field('exhibit_image');?>
           <div class="event <?php if (empty($image)): echo 'noimage'; endif; ?>">
-            <?php
-            if (!empty($image)):
-              ?>
-            <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
-              <img src="<?php echo $image; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
-            </a>
-
-
-            <?php else: ?>
+            <?php if (!empty($image)): ?>
               <a rel="prettyPhoto[gallery<?php the_ID(); ?>]" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
+                <img src="<?php echo $image; ?>" class="attachment-post-thumbnail wp-post-image" alt="<?php the_title(); ?>" />
+              </a>
+            <?php else: ?>
+              <a rel="<?php the_ID(); ?>" href="<?php echo get_field('exhibit_image'); ?>" title="<?php the_title(); ?>">
                 <div class="image-placeholder"> </div>
               </a>
             <?php endif; ?>

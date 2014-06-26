@@ -25,7 +25,7 @@ $('.iosSlider').iosSlider({
 					snapSlideCenter: true,
 					onSlideChange: slideChange,
 					navNextSelector: $('.next'),
-				    navPrevSelector: $('.prev'),
+          navPrevSelector: $('.prev')
 				});
 function slideChange(args) {
 				$('.slider .item').removeClass('active');

@@ -220,7 +220,45 @@ jQuery(document).ready(function(){
 		horizontal_padding: 0,
 		opacity:".5",
 		keyboard_shortcuts: false,
-		show_title: false
+		show_title: false,
+    markup: '<div class="pp_pic_holder"> \
+            <div class="ppt">&nbsp;</div> \
+              <div class="pp_top"> \
+                <div class="pp_left"></div> \
+                <div class="pp_middle"></div> \
+                <div class="pp_right"></div> \
+              </div> \
+              <div class="pp_content_container"> \
+                <div class="pp_left"> \
+                  <div class="pp_right"> \
+                    <div class="pp_content"> \
+                      <div class="pp_loaderIcon"></div> \
+                      <div class="pp_fade"> \
+                        <a href="#" class="pp_expand" title="Expand the image">Expand</a> \
+                        <div class="pp_hoverContainer"></div> \
+                        <div id="pp_full_res"></div> \
+                        <div class="pp_details"> \
+                          <div class="pp_nav"> \
+                          <a href="#" class="pp_arrow_previous">Previous</a> \
+                          <p class="currentTextHolder">0/0</p> \
+                          <a href="#" class="pp_arrow_next">Next</a> \
+                        </div> \
+                        <p class="pp_description"></p> \
+                        <div class="pp_social">{pp_social}</div> \
+                        <a class="pp_close" href="#">Close</a> \
+                      </div> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </div> \
+            <div class="pp_bottom"> \
+            <div class="pp_left"></div> \
+            <div class="pp_middle"></div> \
+            <div class="pp_right"></div> \
+          </div> \
+        </div> \
+      <div class="pp_overlay"></div>'
 	});
 	
 	////////////////
