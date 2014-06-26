@@ -24,7 +24,7 @@
   <div id="loadingContainer"></div>
   <div id="wrapper">
     <div id="header">
-      <h1 id="theTagline"><a href="/"><img src="<?php bloginfo('template_url'); ?>/images/header-logo.png" /></a></h1>
+      <h1 id="theTagline"><a href="/"><img src="<?php bloginfo('template_url'); ?>/images/header-logo.png" /></a> <?php if ( is_singular($post) ) echo $post->post_title; ?></h1>
         <?php include('menu.php'); ?>
       <div class="clear"></div>
     </div> <!-- /#header -->
