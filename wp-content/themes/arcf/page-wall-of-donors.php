@@ -177,106 +177,6 @@
 			});
 			</script>
 
-
-			<!-- Divider width -->
-			<script type="text/javascript">
-			var $divider = jQuery.noConflict();
-			var Divider = function() {
-				var pagewidth = $divider('#main-container').width();
-				var leftmargins = (pagewidth - $divider('.post-content').width())/2;
-				var leftmargin = 0-leftmargins;
-				$divider('.su-divider').css({"width":pagewidth,"position":"absolute","margin-left":leftmargin});
-			}
-			$divider(document).ready( function () {
-				Divider();
-			});
-			$divider(window).resize( function () {
-				Divider();	
-			});
-			</script>
-
-
-			<!-- Responsive videos -->
-			<script type="text/javascript">
-			var $fv = jQuery.noConflict();
-			  $fv(document).ready(function(){
-			    $fv(".video-container").fitVids();
-			  });
-			</script>
- 
-
-
-			<!-- Video screenshots from Vimeo -->
-			<script type="text/javascript">
-			var $vth = jQuery.noConflict();
-			function vimeoLoadingThumb(id) {    
-			    var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
-			    var id_img = "#vimeo-" + id;
-			    var vimscript = document.createElement( 'script' );
-			    vimscript.type = 'text/javascript';
-			    vimscript.src = url;
-			
-			    $vth(id_img).before(vimscript);
-			}
-			function showThumb(data){
-			    var id_img = "#vimeo-" + data[0].id;
-			    $vth(id_img).css('background-image','url("'+data[0].thumbnail_large+'")');
-			}
-			function infscrollVimeo() {
-				$vth('.vimeo-nothumb').each(function() {
-					var thisid = $vth(this).attr('data-id');
-					vimeoLoadingThumb(thisid);
-				});
-			}
-			</script>
-
-
-			<!-- Gallery post format --> 
-			<script type="text/javascript">   
-			var $j = jQuery.noConflict();
-			$j(function(){ 
-				$j(window).load(function() {         
-					$j(".orbit-featured").orbit({
-						bullets: false,
-						pauseOnHover: true,
-						animation: "fade",
-						directionalNav: true,
-						advanceSpeed: 4000,
-						timer: false,
-						captions: false
-					});
-				});
-			});
-			</script>
-
-
-			<!-- Orbit slider height on browser resize -->
-			<script type="text/javascript">
-			var $orb = jQuery.noConflict();
-			$orb(document).ready(function () {
-				$orb('#orbit-slider .orbit-featured').wrap('<div class="orbit-wrapper"></div>');
-			});
-			var OrbitSize = function () {
-				var min_height = 90000;
-			    var image = null;
-				$orb('#orbit-slider .container_orbit .orbit-wrapper').css('width','100%');
-				$orb('#orbit-slider .container_orbit .orbit-featured').css('width','100%');
-			    $orb('#orbit-slider .container_orbit .orbit-featured img').each(function() {
-			    	var cur_height = $orb(this).height();
-			    	if (cur_height < min_height) {
-			        	min_height = cur_height;
-			    	}
-			    });
-				}
-			$orb(window).load(function () {
-				OrbitSize();
-			});
-			$orb(window).resize(function () {
-				OrbitSize();
-			});
-			</script>
-
-
 			<!-- Project box overlays with excerpts -->
 			<script type="text/javascript">
 			var $over = jQuery.noConflict();
@@ -289,12 +189,11 @@
 			
 			});
 			</script>
-			
-			
+
 			<!-- Fade project boxes on mouse hover -->
 			<script type="text/javascript">
 			var $hover = jQuery.noConflict();
-			$hover(function(){	
+			$hover(function(){
 				$hover(document).on('mouseover', '.format-image,.format-standard,.format-video,.format-link,.format-gallery' ,
 					function () {
 						$hover(this).prepend('<div class="project-hover"></div>');
@@ -305,22 +204,6 @@
 					})
 			});
 			</script>
-
-
-			<!-- Comment placeholders -->
-			<script type="text/javascript">
-			var $plc = jQuery.noConflict();
-			$plc(window).load(function() {
-				$plc('#respond input#author').attr('placeholder','Name');
-				$plc('#respond input#email').attr('placeholder','Email');
-				$plc('#respond input#url').attr('placeholder','Website');
-				$plc('#respond textarea#comment').attr('placeholder','Comment');
-			});
-			</script>
-			
-			
-			<!-- Retrieve URLs from post content -->
-			
 			
 			<!-- Truncate text on portfolio and blog pages -->
 			<script type="text/javascript">
@@ -354,9 +237,9 @@
 				var $container = $mason('#content');  
 				$container.isotope({
 			    	itemSelector: '.post',
-					layoutMode: "perfectMasonry",
-					perfectMasonry: {
-						columnWidth: 268		}
+            masonry: {
+              columnWidth: 268
+            }
 			    }); 
 				$mason('#filters a.filterablea,#filter-mobile a.filterablea,#icons-mobile a.filterablea,#icons-menu a.filterablea').click(function(){
 			  		var selector = $mason(this).attr('data-filter');
@@ -394,7 +277,7 @@
 			  	});
 				$cont.infinitescroll(
 					{
-						navSelector  : '#page_nav',    // selector for the paged navigation 
+						navSelector  : '#page_nav',    // selector for the paged navigation
 						nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
 						itemSelector : '.post',     // selector for all items you'll retrieve
 						loading: {
@@ -404,27 +287,8 @@
 						}
 					},
 					function( newElements ) {
-						$cont.isotope( 'insert', $mason( newElements ),
-						function() {
-			                var fb_timeout = null;
-			                var fb_opts = { };
-			                var fb_IMG_select = 'a[href$=".jpg"]:not(.nofancybox),a[href$=".JPG"]:not(.nofancybox),a[href$=".gif"]:not(.nofancybox),a[href$=".GIF"]:not(.nofancybox),a[href$=".png"]:not(.nofancybox),a[href$=".PNG"]:not(.nofancybox)';
-			                $inf(fb_IMG_select).addClass('fancybox').attr('rel', 'gallery');
-			                $inf('a.fancybox, area.fancybox').fancybox( $inf.extend({}, fb_opts, { }) );
-			                $inf('#fancybox-auto').trigger('click');
-							$inf(".orbit-featured").orbit({
-								bullets: false,
-								pauseOnHover: true,
-								animation: "fade",
-								directionalNav: true,
-								advanceSpeed: 4000,
-								timer: false,
-								captions: false
-							});
-							OrbitSize();
-							infscrollVimeo();
-						}
-						); 
+						$cont.isotope( 'insert', $mason( newElements )
+						);
 					}
 				);
 			});
@@ -778,7 +642,7 @@
 
                   <?php $sepcount = 0; ?>
 
-								<? else: ?>
+								<?php else: ?>
 									<div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
 	    									<div class="post-wrapper inner-image-placeholder">
 	    										<div class="image-link-inner">
@@ -821,78 +685,10 @@
 								
 							endwhile;
 						endif; ?>
-						
-						<!-- post-size-large post-size-2x2 project type-project status-publish format-aside hentry post-single portfolio portfolio post isotope-item -->
-						
-						<!--<div class="overlay-post"></div> or <div class="overlay-image"></div> or <div class="overlay-video"></div>-->
-						
-						<!--	
-						<div id="post-290" class=" post-size-1x1 project type-project status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
-							<div class="inner-image-placeholder" id="post-290-in" style="background-image: url(http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-title.png);">
-								<a href="http://satoristudio.net/ikebana/">
-									<div class="image-link-inner"></div>
-								</a>
-   							</div>
-						</div><!--.post-single-->		
-									
-						<!--            
-						<div id="post-292" class=" post-size-large post-size-2x2 project type-project status-publish format-aside hentry post-single portfolio portfolio post" data-post-size="2x2">
-							<div class="post-wrapper">
-   								<div class="post-content">
-       								<p>Our aim was to craft a clean theme with a wide range of applications, from agency portfolios and artistic showcases to personal blogs and Pinterest-type online collections.</p>
-   								</div>
-           						<div class="clearboth"></div> 
-							</div>
-						</div><!--.post-single-->                        
 
-						<!--
-						<div id="post-302" class=" post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="1x1">
-							
-            					<div class="inner-image-placeholder" id="post-302-in" style="background-image: url(http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-portfolio-1.jpg);">
-    								<a href="http://satoristudio.net/ikebana/project/new-password-holder-app/">
-    									<div class="image-link-inner"></div>
-    								</a>
-                					<div class="image-post-overlay">
-        								<div class="image-post-overlay-in">
-										<p>New Password App</p>
-            							</div>
-                    				</div>
-    							</div>
-						</div><!--.post-single-->                                                          
-						        
-						<!--       
-						<div id="post-343" class=" post-size-1x1 project type-project status-publish format-gallery hentry post-single experiments experiments post" data-post-size="1x1">
-							<a href="http://satoristudio.net/ikebana/project/gallery-post/">
-    			    					<div class="standard-post-linker">
-    								</div>
-    							</a>
-							<div id="orbit-slider">
-								<div class="container_orbit">
-									<div class="orbit-featured">
-										<div class="slider-img" id="slider-img-343-0" data-caption="#343-0"  />
-											<style type="text/css"> #slider-img-343-0 { background-image: url("http://satoristudio.net/ikebana/wp-content/uploads/2013/06/portfolio-slider-2.jpg") } </style> 
-										</div>
-										<img class="slider-img" src="http://satoristudio.net/ikebana/wp-content/uploads/2013/06/portfolio-slider-2.jpg" data-caption="#343-0"  />
-										<div class="slider-img" id="slider-img-343-1" data-caption="#343-1"  />
-											<style type="text/css"> #slider-img-343-1 { background-image: url("http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-slider-3.jpg") } </style>
-										</div>
-										<img class="slider-img" src="http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-slider-3.jpg" data-caption="#343-1"  />
-										<div class="slider-img" id="slider-img-343-2" data-caption="#343-2"  />
-											<style type="text/css"> #slider-img-343-2 { background-image: url("http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-slider-1.jpg") } </style>
-										</div>
-										<img class="slider-img" src="http://satoristudio.net/ikebana/wp-content/uploads/2013/07/portfolio-slider-1.jpg" data-caption="#343-2"  />
-									</div>
-									<span class="orbit-caption" id="343-0"></span>
-									<span class="orbit-caption" id="343-1"></span>
-									<span class="orbit-caption" id="343-2"></span>
-								</div>
-							</div>
-						</div><!--.post-single-->                              
           </div> <!-- portfolio-wrapper -->
             <div class="clearboth">
-              <nav id="page_nav">
-                <a href="/replacewith_wall-of-donors/page/2"></a>
-              </nav>
+
             </div>
           </div>
 
