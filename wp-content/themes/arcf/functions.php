@@ -4,7 +4,8 @@
 // Custom function that formats the title if it has a date.
 function year_match($string) {
   $string = html_entity_decode($string);
-  if ( preg_match('~\d{4}\040–~', $string) ) {
+  // Check for dashes
+  if ( preg_match('~\d{4}\040–~', $string) || preg_match('~\d{4}\040-~', $string) ||  preg_match('~\d{4}\040\040-~', $string) ) {
     return $string;
   }
   elseif ( preg_match('~\d{4}\040~', $string) ) {
