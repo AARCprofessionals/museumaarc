@@ -24,6 +24,8 @@ function year_match($string) {
   else {return $string;}
 }
 
+add_filter('the_title', 'year_match');
+
 function determine_donors_query($show, $search, $from, $to) {
   $args = array(
     'post_type' => 'arcf_donors',

@@ -45,8 +45,6 @@
         $subquery->the_post();
         ?>
           <?php
-            $title = html_entity_decode(get_the_title());
-            $title = year_match($title);
           ?>
 
           <?php $image = get_field('exhibit_image');?>
@@ -62,7 +60,7 @@
             <?php endif; ?>
 
             <div class="eventDetails" <?php if (empty($image)){echo 'style="top: 0px;"';} ?>>
-              <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php echo $title; ?></h2>
+              <h2 <?php if (!empty($image)){echo 'class="closed has-image"';} ?>><?php the_title(); ?></h2>
               <div class="eventInfo">
                 <p><?php echo ( do_shortcode( get_field('description') ) ); ?></p>
                 <p><?php echo get_field('image_credit'); ?></p>
