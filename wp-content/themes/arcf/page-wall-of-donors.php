@@ -637,7 +637,6 @@
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/311_2996427.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/445_4387134.jpg'
             );
-            var_dump($separators);
 
             ?>
             <?php if ( $subquery->have_posts() ):
