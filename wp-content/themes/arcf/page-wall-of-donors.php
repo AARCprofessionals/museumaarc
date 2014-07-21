@@ -4,9 +4,9 @@
 			<p><a href="#content">Skip to Content</a></p>
 		</div><!--.none-->
 		<div id="main"><!-- this encompasses the top of the website -->
-			<!-- Header functions -->
-			<!-- function to convert colours from hex into rgb -->
-			<!-- Count the number of active widgets -->
+    <!-- Header functions -->
+    <!-- function to convert colours from hex into rgb -->
+    <!-- Count the number of active widgets -->
     <!--[if IE 7]>
 			<link rel="stylesheet" href="http://satoristudio.net/ikebana/wp-content/themes/Ikebana/ie8.css">
 			<style type="text/css"> #footer-widget-area .widget-footer { width: 20%; } </style>
@@ -541,21 +541,21 @@
 					<form method="post" action="" />
 						<div class="field">
 							<label>Search by Date Range</label>
-							<input type="text" class="datepicker" name="from" value="<?php echo $_POST["from"]; ?>" /> to <input type="text" class="datepicker" name="to" value="<?php echo $_POST["to"]; ?>" />
+							<input type="text" class="datepicker" name="from" value="<?php if (isset($_POST["from"])) {echo $_POST["from"];} ?>" /> to <input type="text" class="datepicker" name="to" value="<?php if (isset($_POST["to"])) {echo $_POST["to"];}; ?>" />
 						</div>
 						<div class="field">
 							<label>Show:</label>
 							<select name="show">
-								<option value="name"<?php if ($_POST["show"]=='name') echo ' selected'; ?>>by the name</option>
-								<option value="dedication"<?php if ($_POST["show"]=='dedication') echo ' selected'; ?>>by the dedication</option>
+								<option value="name"<?php if (isset($_POST["show"]) && $_POST["show"] == 'name') echo ' selected'; ?>>by the name</option>
+								<option value="dedication"<?php if (isset($_POST["show"]) && $_POST["show"]=='dedication') echo ' selected'; ?>>by the dedication</option>
 							</select>
 						</div>
 						<div class="field">
 							<label>Search:</label>
-							<input type="text" name="search" value="<?php echo $_POST["search"]; ?>" style="width:200px;" />
+							<input type="text" name="search" value="<?php if (isset($_POST["search"])) { echo $_POST["search"]; } ?>" style="width:200px;" />
 						</div>
 						<div class="field">
-							<input type="submit" value="Go" />
+							<input name="submit-search" type="submit" value="Go" />
 						</div>
 						<div style="clear:both;"></div>
 						 <script>
@@ -566,60 +566,83 @@
 					</form>
 				</div>
 				<div id="content" style="padding-bottom:40px;">
-					<div id="portfolio-wrapper">	
+					<div id="portfolio-wrapper">
 						
 						<?php
 						$colors = array('#00274E', '#a33038', '#6391B5');
 						$separators = array();
 						$sepcount = 0;
 						$sepindex = 0;
-						$show = $_POST["show"] == 'dedication' ? 'dedication' : 'name';
-						$search = $_POST["search"] != '' ? $_POST["search"] : null;
-						$from = $_POST["from"] != '' ? date("F j, Y", strtotime($_POST["from"])) : null;
-						$to = $_POST["to"] != '' ? date("F j, Y", strtotime($_POST["to"] . "+1 day")) : null;
+            $show = isset($_POST["show"]) && $_POST["show"] == 'dedication' ? 'dedication' : 'name';
+            $search = isset($_POST["search"]) && $_POST["search"] != '' ? $_POST["search"] : null;
+            $from = isset($_POST["from"]) && $_POST["from"] != '' ? date("F j, Y", strtotime($_POST["from"])) : null;
+            $to = isset($_POST["to"]) && $_POST["to"] != '' ? date("F j, Y", strtotime($_POST["to"] . "+1 day")) : null;
 
-            $args = determine_donors_query($show, $search, $from, $to);
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+            $args = array(
+              'post_type' => 'arcf_donors',
+              'order_by' => 'id',
+              'order' => 'DESC',
+              'posts_per_page' => 89,
+              'is_archive' => true,
+              'is_paged' => true,
+              'paged' => $paged,
+              'meta_query' => array(
+                array(
+                  'key' => 'type',
+                  'value' => 'donor',
+                  'compare' => '='
+                )
+              )
+            );
+            if (isset($from)) {
+              $args['date_query'] = array(
+                array(
+                  'after' => $from,
+                  'before' => $to
+                ),
+                'inclusive' => true,
+              );
+            }
+            if (isset($show) && $show == 'name') {
+              $args['s'] = $search;
+            }
+            if (isset($show) && $show == 'dedication') {
+              $args['meta_query'] = array(
+                array(
+                  'key' => array('brick_message', 'block_message'), // this key will change!
+                  'value' => $search,
+                  'compare' => 'LIKE'
+                ),
+                array(
+                  'key' => 'type',
+                  'value' => 'donor',
+                  'compare' => '='
+                )
+              );
+            }
+
 						$subquery = new WP_Query($args);
-						
-						// Separator Query
-						$args = array(
-						'post_type' => 'arcf_donors',
-						'order_by' => 'id',
-						'order' => 'ASC',
-						'posts_per_page' => -1,
-						'meta_query' => array(
-							array(
-								'key' => 'type',
-								'value' => 'separator',
-								'compare' => '='
-							)
-						)
-						);
-						$sepquery = new WP_Query($args);
-						if ( $sepquery->have_posts() ):
-							while ( $sepquery->have_posts() ):
-                $sepquery->the_post();
-                $separators[] = get_field('separator_image');
-							endwhile;
-						endif;
+
+            $separators = array(
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/445_4387134.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/564_3765091.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/829_4027101.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/988_4172711.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/987_4120232.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/127_3764954.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/440_4241356resized.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/127_3764954.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/311_2996427.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/445_4387134.jpg'
+            );
+            var_dump($separators);
+
             ?>
             <?php if ( $subquery->have_posts() ):
               while ( $subquery->have_posts() ): $subquery->the_post();
-                $color = $colors[mt_rand(0,2)]; $sepcount++; ?>
-
-              <?php if ($sepcount == 5): ?>
-                <?php $sepindex++; ?>
-                <?php if ($sepindex > 10) $sepindex = 1;?>
-
-                <div id="post-290" class="<?php print $sepindex; ?> post-size-1x1 project type-project status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
-                  <div class="inner-image-placeholder" id="post-290-in" style="background-image: url('<?php echo $separators[$sepindex]; ?>');">
-                    <div class="image-link-inner"></div>
-                  </div>
-                </div>
-
-                <?php $sepcount = 0; ?>
-
-              <?php else: ?>
+                $color = $colors[mt_rand(0,2)]; ?>
 
                 <div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
                   <div class="post-wrapper inner-image-placeholder">
@@ -663,17 +686,23 @@
                     <?php endif; ?>
                   </div>
                 </div>
+            <?php endwhile;
+              wp_reset_query();
 
-              <?php endif; ?>
-            <?php endwhile; ?>
+              ?>
           <?php endif; ?>
-          <?php wp_reset_postdata(); ?>
-
           </div> <!-- portfolio-wrapper -->
-          <div class="clearboth"></div>
+          <div class="clearboth">
+          </div>
         </div>
       </div>
-    <div class="clear"></div>
+    <div class="clear">
+      <?php if (!isset($_POST["show"])): ?>
+        <nav id="page_nav">
+          <a href="/wall-of-donors/page/2"></a>
+        </nav>
+      <?php endif; ?>
+    </div>
     </div>
 	</div> <!-- wrapper -->
 
