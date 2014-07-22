@@ -656,13 +656,20 @@
                 </div>
 
                 <?php $sepcount = 0; ?>
-
+<?php            $show = isset($_POST["show"]) && $_POST["show"] == 'dedication' ? 'dedication' : 'name';
+                  ?>
               <?php endif; ?>
               <div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
                 <div class="post-wrapper inner-image-placeholder">
 
+                  <?php
+                  $plogo = get_field('partner_logo');
+                  if (isset($plogo) || !empty($plogo)) {
+                    $image_url = $plogo;
+                  }
+                  ?>
                   <!-- Begin Title Section -->
-                  <div class="image-link-inner">
+                  <div class="image-link-inner" <?php if (isset($image_url)): ?> style="background-image: url('<?php echo $image_url; ?>'); background-repeat:no-repeat;" <?php endif; ?>>
                     <?php
                     echo '<p class="donor">';
                     echo the_title();
