@@ -595,6 +595,9 @@
                 )
               )
             );
+            if (isset($_POST["from"]) || isset($_POST["show"])) {
+              $args['posts_per_page'] = -1;
+            }
             if (isset($from)) {
               $args['date_query'] = array(
                 array(
@@ -625,14 +628,14 @@
 						$subquery = new WP_Query($args);
 
             $separators = array(
-              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/445_4387134.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/987_4120232.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/564_3765091.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/829_4027101.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/988_4172711.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/987_4120232.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/127_3764954.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/440_4241356resized.jpg',
-              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/127_3764954.jpg',
+              'http://vmuseum.s3.amazonaws.com/wp-content/uploads/987_4120232.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/311_2996427.jpg',
               'http://vmuseum.s3.amazonaws.com/wp-content/uploads/445_4387134.jpg'
             );
@@ -698,7 +701,7 @@
                 </div>
               </div>
             <?php endwhile; ?>
-          <?php else: ?>
+            <?php else: ?>
               <div id="post" class="post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post isotope-item" data-post-size="1x1" style="position: absolute; left: 0px; top: 0px; transform: translate3d(536px, 0px, 0px); background-color: rgb(163, 48, 56);">
                 <div class="post-wrapper inner-image-placeholder">
                   <!-- Begin Title Section -->
@@ -708,18 +711,19 @@
                   <!-- Begin Dedication Section -->
                 </div>
               </div>
-          <?php endif; ?>
-
+            <?php endif; ?>
           </div> <!-- portfolio-wrapper -->
           <div class="clearboth">
           </div>
         </div>
       </div>
-    <div class="clear">
-      <nav id="page_nav">
-        <a href="/wall-of-donors/page/2"></a>
-      </nav>
-    </div>
+      <div class="clear">
+        <?php if (!isset($_POST['from']) || !isset($_POST['show'])): ?>
+          <nav id="page_nav">
+            <a href="/wall-of-donors/page/2"></a>
+          </nav>
+        <?php endif; ?>
+      </div>
     </div>
 	</div> <!-- wrapper -->
 
