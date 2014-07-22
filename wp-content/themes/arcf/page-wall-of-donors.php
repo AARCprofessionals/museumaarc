@@ -4,9 +4,9 @@
 			<p><a href="#content">Skip to Content</a></p>
 		</div><!--.none-->
 		<div id="main"><!-- this encompasses the top of the website -->
-    <!-- Header functions -->
-    <!-- function to convert colours from hex into rgb -->
-    <!-- Count the number of active widgets -->
+			<!-- Header functions -->
+			<!-- function to convert colours from hex into rgb -->
+			<!-- Count the number of active widgets -->
     <!--[if IE 7]>
 			<link rel="stylesheet" href="http://satoristudio.net/ikebana/wp-content/themes/Ikebana/ie8.css">
 			<style type="text/css"> #footer-widget-area .widget-footer { width: 20%; } </style>
@@ -584,8 +584,7 @@
               'post_type' => 'arcf_donors',
               'order_by' => 'id',
               'order' => 'DESC',
-              'posts_per_page' => 89,
-              'is_archive' => true,
+              'posts_per_page' => 50,
               'is_paged' => true,
               'paged' => $paged,
               'meta_query' => array(
@@ -641,66 +640,85 @@
             ?>
             <?php if ( $subquery->have_posts() ):
               while ( $subquery->have_posts() ): $subquery->the_post();
-                $color = $colors[mt_rand(0,2)]; ?>
+                $color = $colors[mt_rand(0,2)]; $sepcount++; ?>
 
-                <div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
-                  <div class="post-wrapper inner-image-placeholder">
+              <?php if ($sepcount == 5): ?>
+                <?php $sepindex++; ?>
+                <?php if ($sepindex > 9) $sepindex = 0;?>
 
-                    <!-- Begin Title Section -->
-                    <div class="image-link-inner">
-                      <?php
-                      echo '<p class="donor">';
-                      echo the_title();
-                      echo '</p>';
-                      if ($show == 'dedication'):
-                        if (get_field('brick_message') != '' ||  get_field('block_message') != ''):
-                          echo '<div class="image-post-overlay" style="display: block;"><div class="image-post-overlay-in">';
+                <div id="post-290" class="<?php print $sepindex; ?> post-size-1x1 project type-project pic status-publish format-link hentry post-single has_thumb about about experiments experiments portfolio portfolio services services team team post" data-post-size="1x1">
+                  <div class="inner-image-placeholder" id="post-290-in" style="background-image: url('<?php echo $separators[$sepindex]; ?>');">
+                    <div class="image-link-inner"></div>
+                  </div>
+                </div>
+
+                <?php $sepcount = 0; ?>
+
+              <?php endif; ?>
+              <div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
+                <div class="post-wrapper inner-image-placeholder">
+
+                  <!-- Begin Title Section -->
+                  <div class="image-link-inner">
+                    <?php
+                    echo '<p class="donor">';
+                    echo the_title();
+                    echo '</p>';
+                    if ($show == 'dedication'):
+                      if (get_field('brick_message') != '' ||  get_field('block_message') != ''):
+                        echo '<div class="image-post-overlay" style="display: block;"><div class="image-post-overlay-in">';
+                        if (get_field('brick_size') == '1x1'):
+                          echo '<p>'. the_field('brick_message') .'</p>';
+                        else:
+                          echo '<p>'. the_field('block_message') .'</p>';
+                        endif;
+                        echo '</div></div>';
+                      endif;
+                    endif;
+                    ?>
+                  </div>
+                  <!-- Begin Dedication Section -->
+                  <?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
+                    <div class="image-post-overlay">
+                      <div class="image-post-overlay-in">
+                        <?php
+                        if ($show == 'name'):
                           if (get_field('brick_size') == '1x1'):
                             echo '<p>'. the_field('brick_message') .'</p>';
                           else:
                             echo '<p>'. the_field('block_message') .'</p>';
                           endif;
-                          echo '</div></div>';
+                        else:
+                          echo the_title();
                         endif;
-                      endif;
-                      ?>
-                    </div>
-                    <!-- Begin Dedication Section -->
-                    <?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
-                      <div class="image-post-overlay">
-                        <div class="image-post-overlay-in">
-                          <?php
-                          if ($show == 'name'):
-                            if (get_field('brick_size') == '1x1'):
-                              echo '<p>'. the_field('brick_message') .'</p>';
-                            else:
-                              echo '<p>'. the_field('block_message') .'</p>';
-                            endif;
-                          else:
-                            echo the_title();
-                          endif;
-                          ?>
-                        </div>
+                        ?>
                       </div>
-                    <?php endif; ?>
-                  </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
-            <?php endwhile;
-              wp_reset_query();
-
-              ?>
+              </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+              <div id="post" class="post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post isotope-item" data-post-size="1x1" style="position: absolute; left: 0px; top: 0px; transform: translate3d(536px, 0px, 0px); background-color: rgb(163, 48, 56);">
+                <div class="post-wrapper inner-image-placeholder">
+                  <!-- Begin Title Section -->
+                  <div class="image-link-inner">
+                    <p class="donor">Sorry, no donors were found.</p>
+                  </div>
+                  <!-- Begin Dedication Section -->
+                </div>
+              </div>
           <?php endif; ?>
+
           </div> <!-- portfolio-wrapper -->
           <div class="clearboth">
           </div>
         </div>
       </div>
     <div class="clear">
-      <?php if (!isset($_POST["show"])): ?>
-        <nav id="page_nav">
-          <a href="/wall-of-donors/page/2"></a>
-        </nav>
-      <?php endif; ?>
+      <nav id="page_nav">
+        <a href="/wall-of-donors/page/2"></a>
+      </nav>
     </div>
     </div>
 	</div> <!-- wrapper -->
