@@ -1410,6 +1410,18 @@ width: 100%;
 opacity: 0.8;	
 }
 
+.iso-masonry .image-post-overlay.image-post-overlay-image .image-post-overlay-in {
+    padding: 0;
+    background-size: 100% 100%;
+    background-color: transparent;
+    height: 100%;
+}
+
+.iso-masonry .image-post-overlay.image-post-overlay-image {
+    height: 100%;
+    opacity: 0.9;
+}
+
 .image-post-overlay-in {
 padding: 15px 20px;
 }

@@ -656,8 +656,6 @@
                 </div>
 
                 <?php $sepcount = 0; ?>
-<?php            $show = isset($_POST["show"]) && $_POST["show"] == 'dedication' ? 'dedication' : 'name';
-                  ?>
               <?php endif; ?>
               <div id="post" class=" post-size-<?php the_field('brick_size'); ?> project type-project status-publish format-standard hentry has_thumb portfolio portfolio post" data-post-size="<?php the_field('brick_size'); ?>" style="background-color:<?php echo $color; ?>">
                 <div class="post-wrapper inner-image-placeholder">
@@ -669,42 +667,58 @@
                   }
                   ?>
                   <!-- Begin Title Section -->
-                  <div class="image-link-inner" <?php if (isset($image_url)): ?> style="background-image: url('<?php echo $image_url; ?>'); background-repeat:no-repeat;" <?php endif; ?>>
+                  <div class="image-link-inner">
                     <?php
                     echo '<p class="donor">';
                     echo the_title();
                     echo '</p>';
+                    // If the posts are being returned as a result of a search of dedications, show the dedications as activated.
                     if ($show == 'dedication'):
                       if (get_field('brick_message') != '' ||  get_field('block_message') != ''):
                         echo '<div class="image-post-overlay" style="display: block;"><div class="image-post-overlay-in">';
-                        if (get_field('brick_size') == '1x1'):
+
+                        if (get_field('brick_message')):
                           echo '<p>'. the_field('brick_message') .'</p>';
                         else:
                           echo '<p>'. the_field('block_message') .'</p>';
                         endif;
+
                         echo '</div></div>';
+                      else:
+                        // If the brick is not displayed show a logo if there is one.
+                        if (isset($image_url) && !empty($image_url)):
+                          echo '<div class="image-post-overlay image-post-overlay-image" style="display: block;">';
+                          echo '<div class="image-post-overlay-in" style="background-image: url(' . $image_url . '); background-repeat: no-repeat;">';
+                          echo '</div></div>';
+                        endif;
                       endif;
                     endif;
                     ?>
                   </div>
                   <!-- Begin Dedication Section -->
-                  <?php if (get_field('brick_message') != '' ||  get_field('block_message') != ''): ?>
-                    <div class="image-post-overlay">
-                      <div class="image-post-overlay-in">
-                        <?php
-                        if ($show == 'name'):
-                          if (get_field('brick_size') == '1x1'):
-                            echo '<p>'. the_field('brick_message') .'</p>';
-                          else:
-                            echo '<p>'. the_field('block_message') .'</p>';
-                          endif;
-                        else:
-                          echo the_title();
-                        endif;
-                        ?>
-                      </div>
-                    </div>
-                  <?php endif; ?>
+                  <?php
+                  if ($show == 'name'):
+                    if (get_field('brick_message') != '' ||  get_field('block_message') != ''):
+                      echo '<div class="image-post-overlay"><div class="image-post-overlay-in">';
+
+                      if (get_field('brick_message')):
+                        echo '<p>'. the_field('brick_message') .'</p>';
+                      else:
+                        echo '<p>'. the_field('block_message') .'</p>';
+                      endif;
+
+                      echo '</div></div>';
+                    else:
+                      if (isset($image_url) && !empty($image_url)):
+                        echo '<div class="image-post-overlay image-post-overlay-image">';
+                        echo '<div class="image-post-overlay-in" style="background-image: url(' . $image_url . '); background-repeat: no-repeat;">';
+                        echo '</div></div>';
+                      endif;
+                    endif;
+                  else:
+                    echo the_title();
+                  endif;
+                  ?>
                 </div>
               </div>
             <?php endwhile; ?>
