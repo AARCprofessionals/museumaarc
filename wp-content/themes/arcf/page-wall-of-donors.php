@@ -762,5 +762,6 @@
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/scripts/isotope/jquery.isotope.perfectmasonry.js?ver=3.8.1'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.easing-1.3.pack.js?ver=1.3'></script>
 	<script type='text/javascript' src='<?php bloginfo('template_url'); ?>/includes/easy-fancybox/fancybox/jquery.mousewheel-3.0.4.pack.js?ver=3.0.4'></script>
-
+  <!-- Adds Google analytics -->
+  <script type='text/javascript' src='<?php bloginfo('template_url'); ?>/js/ga.js'></script>
 <?php get_footer('donors'); ?>
