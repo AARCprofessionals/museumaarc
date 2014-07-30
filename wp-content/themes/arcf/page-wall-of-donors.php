@@ -723,15 +723,17 @@
               </div>
             <?php endwhile; ?>
             <?php else: ?>
-              <div id="post" class="post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post isotope-item" data-post-size="1x1" style="position: absolute; left: 0px; top: 0px; transform: translate3d(536px, 0px, 0px); background-color: rgb(163, 48, 56);">
-                <div class="post-wrapper inner-image-placeholder">
-                  <!-- Begin Title Section -->
-                  <div class="image-link-inner">
-                    <p class="donor">Sorry, no donors were found.</p>
+              <?php if (!isset($_POST['from']) || !isset($_POST['show'])): ?>
+                <div id="post" class="post-size-1x1 project type-project status-publish format-standard hentry has_thumb portfolio portfolio post isotope-item" data-post-size="1x1" style="position: absolute; left: 0px; top: 0px; transform: translate3d(536px, 0px, 0px); background-color: rgb(163, 48, 56);">
+                  <div class="post-wrapper inner-image-placeholder">
+                    <!-- Begin Title Section -->
+                    <div class="image-link-inner">
+                      <p class="donor">Sorry, no donors were found.</p>
+                    </div>
+                    <!-- Begin Dedication Section -->
                   </div>
-                  <!-- Begin Dedication Section -->
                 </div>
-              </div>
+              <?php endif; ?>
             <?php endif; ?>
           </div> <!-- portfolio-wrapper -->
           <div class="clearboth">
