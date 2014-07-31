@@ -35,7 +35,7 @@
 	<!-- Advanced SEO Options -->
 	<style type="text/css">
     .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
-    #navigation ul li#menu-item-plugs a { color:#003366; background-color:#ffffff; display: inline; border-radius: 3px; padding:3px; font-weight: normal; font-size: 12px; margin: 0 20px; }
+    #navigation ul li#menu-item-plugs a { color:#ffffff; background-color:rgb(163, 48, 56); display: inline; border-radius: 3px; padding:3px; font-weight: normal; font-size: 12px; margin: 0 20px; }
   </style>
 
 	<!-- Easy FancyBox 1.3.4.9 using FancyBox 1.3.4 -->
