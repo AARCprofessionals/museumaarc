@@ -5,6 +5,8 @@
     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-502" id="menu-item-502"><a href="/wall-of-donors/">Wall of Donors</a></li>
     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-94" id="menu-item-94"><a href="/contact/">Contact</a></li>
     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-94" id="menu-item-94"><a href="/virtual-museum-contributors/">Contributors</a></li>
-    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item" id="menu-item-plugs"><a href="https://store.aarc.org/SearchResults.aspx?searchterm=museum&searchoption=ALL">Donate</a></li>
+    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item" id="menu-item-plugs">
+      <a href="http://appserver.aarc.org/web/online/contact_management/aarcstore/store_home.aspx?New_ContentCollectionOrganizerCommon=8#New_ContentCollectionOrganizerCommon">Donate</a>
+    </li>
   </ul>
 </div>
